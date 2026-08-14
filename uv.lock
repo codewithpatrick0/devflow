@@ -125,11 +125,6 @@ dependencies = [
     { name = "uvicorn", extra = ["standard"] },
 ]
 
-[package.dev-dependencies]
-dev = [
-    { name = "alembic" },
-]
-
 [package.metadata]
 requires-dist = [
     { name = "alembic", specifier = ">=1.19.1" },
@@ -139,9 +134,6 @@ requires-dist = [
     { name = "sqlalchemy", specifier = ">=2.0.52" },
     { name = "uvicorn", extras = ["standard"], specifier = ">=0.52.1" },
 ]
-
-[package.metadata.requires-dev]
-dev = [{ name = "alembic", specifier = ">=1.19.1" }]
 
 [[package]]
 name = "fastapi"
