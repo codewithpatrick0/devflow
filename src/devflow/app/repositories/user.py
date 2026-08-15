@@ -7,7 +7,8 @@ from devflow.app.models import User
 class UserRepository:
     def __init__(self, db: AsyncSession) -> None:
         self.db = db
-
+    async def get_by_id(self, user_id: int) -> User | None:
+        return await self.db.scalar(select(User).where(User.id==user_id))
     async def get_by_username(self, username: str) -> User | None:
         return await self.db.scalar(select(User).where(User.username == username))
 
