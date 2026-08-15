@@ -63,3 +63,6 @@ class AuthService:
             access_token=create_access_token(subject),
             refresh_token=create_refresh_token(subject),
         )
+
+    def refresh(self, user: User) -> str:
+        return create_access_token(str(user.id))
