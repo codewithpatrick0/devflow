@@ -94,3 +94,12 @@ async def refresh(
         samesite='lax',
         max_age=settings.access_token_expire_minutes * 60,
     )
+
+
+@router.post(
+    '/logout',
+    status_code=status.HTTP_204_NO_CONTENT,
+)
+async def logout(response: Response):
+    response.delete_cookie('access_token')
+    response.delete_cookie('refresh_token')
