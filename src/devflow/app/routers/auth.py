@@ -1,19 +1,12 @@
 from typing import Annotated
 
-from fastapi import APIRouter, Depends, HTTPException, status, Response
+from fastapi import APIRouter, Depends, HTTPException, Response, status
 from sqlalchemy.ext.asyncio import AsyncSession
 
 from devflow.app.core.config import settings
 from devflow.app.core.db import get_db
-from devflow.app.core.exceptions import (
-    UserAlreadyExistsError,
-    InvalidCredentialsError
-    )
-from devflow.app.schemas import (
-    UserRegister,
-    UserResponse,
-    UserLogin
-    )
+from devflow.app.core.exceptions import InvalidCredentialsError, UserAlreadyExistsError
+from devflow.app.schemas import UserLogin, UserRegister, UserResponse
 from devflow.app.services import AuthService
 
 router = APIRouter(prefix='/auth', tags=['auth'])

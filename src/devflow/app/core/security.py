@@ -1,4 +1,4 @@
-from datetime import datetime, timedelta, timezone
+from datetime import UTC, datetime, timedelta
 from typing import Any
 
 import jwt
@@ -35,7 +35,7 @@ def _secret_for(token_type: str) -> str:
 
 
 def create_token(subject: str, token_type: str, expires_in: timedelta) -> str:
-    now = datetime.now(timezone.utc)
+    now = datetime.now(UTC)
     payload = {
         'sub': subject,
         'type': token_type,

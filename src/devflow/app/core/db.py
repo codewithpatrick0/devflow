@@ -1,11 +1,11 @@
+from collections.abc import AsyncGenerator
+
 from sqlalchemy.ext.asyncio import (
     AsyncEngine,
     AsyncSession,
     async_sessionmaker,
-    create_async_engine
+    create_async_engine,
 )
-
-from collections.abc import AsyncGenerator
 
 from devflow.app.core.config import settings
 

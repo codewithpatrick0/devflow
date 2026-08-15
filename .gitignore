@@ -23,5 +23,8 @@ dist/
 .idea/
 .vscode/
 
+# Personal working notes
+plan.md
+
 # OS
 .DS_Store

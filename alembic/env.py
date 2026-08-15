@@ -6,10 +6,9 @@ from sqlalchemy.engine import Connection
 from sqlalchemy.ext.asyncio import async_engine_from_config
 
 from alembic import context
-
+from devflow.app import models  # noqa: F401  registers the models in Base.metadata
 from devflow.app.core.base import Base
 from devflow.app.core.config import settings
-from devflow.app import models  # noqa: F401  registers the models in Base.metadata
 
 # this is the Alembic Config object, which provides
 # access to the values within the .ini file in use.

@@ -1,5 +1,5 @@
-from sqlalchemy.ext.asyncio import AsyncSession
 from sqlalchemy.exc import IntegrityError
+from sqlalchemy.ext.asyncio import AsyncSession
 
 from devflow.app.core.exceptions import InvalidCredentialsError, UserAlreadyExistsError
 from devflow.app.core.security import (
