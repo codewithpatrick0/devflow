@@ -8,6 +8,9 @@ from devflow.app.core.db import get_db
 from devflow.app.core.exceptions import InvalidCredentialsError, UserAlreadyExistsError
 from devflow.app.schemas import UserLogin, UserRegister, UserResponse
 from devflow.app.services import AuthService
+from devflow.app.dependencies.auth import get_current_user
+from devflow.app.models import User
+
 
 router = APIRouter(prefix='/auth', tags=['auth'])
 
@@ -59,4 +62,6 @@ async def login(data: UserLogin, response: Response, db: DbSession):
         max_age=settings.refresh_token_expire_days * 24 * 60 * 60
     )
         
-
+@router.get('/me', response_model=UserResponse)
+async def me(user: User = Depends(get_current_user)):
+    return user
