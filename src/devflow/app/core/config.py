@@ -3,7 +3,6 @@ from pydantic_settings import BaseSettings, SettingsConfigDict
 
 class Settings(BaseSettings):
     database_url: str
-
     # No defaults on purpose: a signing key that falls back to a hardcoded
     # value is the same as having no signature at all. Access and refresh are
     # signed with different keys, so leaking one does not compromise the other.
