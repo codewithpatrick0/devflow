@@ -61,3 +61,14 @@ async def test_refresh_dependency_returns_user(mock_user: User):
 
     assert result is mock_user
     db.scalar.assert_awaited_once()
+
+@pytest.mark.asyncio
+async def test_access_dependency_rejects_empty_token():
+    db = AsyncMock(spec=AsyncSession)
+    request = make_request('access_token', '')
+
+    with pytest.raises(HTTPException) as exc_info:
+        await get_current_user_from_access_token(request, db)
+
+    assert exc_info.value.status_code == 401
+    db.scalar.assert_not_awaited()
