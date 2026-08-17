@@ -47,3 +47,17 @@ async def test_access_dependency_returns_user(mock_user: User):
 
     assert result is mock_user
     db.scalar.assert_awaited_once()
+
+
+@pytest.mark.asyncio
+async def test_refresh_dependency_returns_user(mock_user: User):
+    db = AsyncMock(spec=AsyncSession)
+    db.scalar.return_value = mock_user
+
+    token = create_refresh_token(str(mock_user.id))
+    request = make_request('refresh_token', token)
+
+    result = await get_current_user_from_refresh_token(request, db)
+
+    assert result is mock_user
+    db.scalar.assert_awaited_once()
